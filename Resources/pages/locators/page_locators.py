@@ -1,0 +1,7 @@
+uploadcsv = "//input[@class='custom-file-input']"
+coloredscript = """return window.getComputedStyle(document.querySelector("a.btn-danger")).getPropertyValue("background-color");"""
+get_dispense_text = "//a[text()='Dispense Now']"
+get_dispense_click = "//a[text()='Dispense Now']"
+get_details_natid = "//tbody/tr/td[1]"
+get_details_relief = "//tbody/tr/td[2]"
+total_tax_relief = "//p[@class='lead'][contains(.,'will be dispensed to')]"
