@@ -66,6 +66,12 @@ UStory04_Retrieve the list of tax relief
     Should Be Equal    ${status_code}   ${scode}
     log    Hero with Status code ${scode}
 
+UStory04_Validate json schema for tax relief api
+    [Documentation]  AC1-1 : Validate json schema for tax relief get api method
+    [Tags]     regression   api
+    ${tax_relief_get_schema}=  Verify_tax_relief_Json_schema
+    Should Contain    ${tax_relief_get_schema}      ${schemavalid}
+
 UStory04_Check natid 5th char masked with '$'
     [Documentation]     AC2 : Validate natid field must be masked from the 5th character onwards.
     [Tags]     regression   ui
@@ -113,12 +119,6 @@ UStory04_Validate tax relief computation after applying normal rounding rule
     ${tax_relief}=    Compute Tax Relief    ${getdicxx}   Yes
     ${taxrelief}=   Get Tax Relief    ${tax_relief}  taxrelief
     Should Be Equal    ${taxrelief}    ${rounding2}
-
-UStory04_Validate json schema for tax relief api
-    [Documentation]  AC7 : Validate json schema for tax relief get api method
-    [Tags]     regression   api
-    ${tax_relief_get_schema}=  Verify_tax_relief_Json_schema
-    Should Contain    ${tax_relief_get_schema}      ${schemavalid}
 
 UStory05_Check dispenses action button is red-colored
     [Documentation]  AC1 : Button must be 'red-colored'
