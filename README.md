@@ -3,7 +3,9 @@
 2.	Robot Framework used for designing the automation framework
 3.  Used the Robot Framework, to test the System and create some functional and acceptance tests, leveraging the power of
     the framework to create test cases that use the keywords to interact with the system.
-4.  QA_Assignment_Test_Strategy.pdf: test strategy/approach used while automating the tests/scripts. 
+4.  QA_Assignment_Test_Strategy.pdf: test strategy/approach used while automating the tests/scripts.
+5.  QA_Assignment_Test_Execution_Sample.jog : Sample of command line test execution
+6.  QA_Assignment_Execution_Results_Sample(folder): Has sample test results of test execution
 
 **Quick Start (follow the steps to run tests and see results)**
 1.	Get latest python3.10 and above with pip installed [**must]
