@@ -1,0 +1,2089 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.10.9 on win32)" generated="20230207 02:21:27.417" rpa="false" schemaversion="3">
+<suite id="s1" name="suiteTest" source="F:\py_file\dOcean\QA_Assignment\Tests\suiteTest.robot">
+<test id="s1-t1" name="UStory01_Insert Single Working Class Hero" line="11">
+<kw name="post_action_single_Insert" library="api">
+<var>${status_code}</var>
+<var>${scode}</var>
+<kw name="Single_insert" library="api">
+<var>${hero}</var>
+<var>${heros}</var>
+<kw name="Session_create" library="common">
+<var>${heros}</var>
+<kw name="Create Session" library="RequestsLibrary">
+<var>${heros}</var>
+<arg>${sessionName}</arg>
+<arg>${url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230207 02:21:28.018" level="INFO">Creating Session using : alias=heros, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg timestamp="20230207 02:21:28.018" level="INFO">${heros} = &lt;requests.sessions.Session object at 0x0000020639D4BA30&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:28.018" endtime="20230207 02:21:28.018"/>
+</kw>
+<msg timestamp="20230207 02:21:28.018" level="INFO">${heros} = &lt;requests.sessions.Session object at 0x0000020639D4BA30&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:28.018" endtime="20230207 02:21:28.018"/>
+</kw>
+<kw name="Get Data Insert" library="fileGen">
+<var>${record}</var>
+<arg>${record1}</arg>
+<msg timestamp="20230207 02:21:28.018" level="INFO">${record} = natid=1231234,name=John Smith,gender=M,birthday=21042003,salary=50000,tax=1000</msg>
+<status status="PASS" starttime="20230207 02:21:28.018" endtime="20230207 02:21:28.018"/>
+</kw>
+<kw name="Create Dictionary On" library="fileGen">
+<var>${hero}</var>
+<arg>${record}</arg>
+<msg timestamp="20230207 02:21:28.018" level="INFO">${hero} = {'natid': '1231234', 'name': 'John Smith', 'gender': 'M', 'birthday': '21042003', 'salary': '50000', 'tax': '1000'}</msg>
+<status status="PASS" starttime="20230207 02:21:28.018" endtime="20230207 02:21:28.018"/>
+</kw>
+<msg timestamp="20230207 02:21:28.018" level="INFO">${hero} = {'natid': '1231234', 'name': 'John Smith', 'gender': 'M', 'birthday': '21042003', 'salary': '50000', 'tax': '1000'}</msg>
+<msg timestamp="20230207 02:21:28.018" level="INFO">${heros} = &lt;requests.sessions.Session object at 0x0000020639D4BA30&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:28.018" endtime="20230207 02:21:28.018"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${heros}</arg>
+<arg>${insert}</arg>
+<arg>json=${hero}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230207 02:21:28.331" level="INFO">POST Request : url=http://localhost:8080/calculator/insert 
+ path_url=/calculator/insert 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '115', 'Content-Type': 'application/json'} 
+ body=b'{"natid": "1231234", "name": "John Smith", "gender": "M", "birthday": "21042003", "salary": "50000", "tax": "1000"}' 
+ </msg>
+<msg timestamp="20230207 02:21:28.331" level="INFO">POST Response : url=http://localhost:8080/calculator/insert 
+ status=202, reason= 
+ headers={'Content-Type': 'text/plain;charset=UTF-8', 'Content-Length': '7', 'Date': 'Mon, 06 Feb 2023 18:21:28 GMT'} 
+ body=Alright 
+ </msg>
+<msg timestamp="20230207 02:21:28.331" level="INFO">${response} = &lt;Response [202]&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:28.018" endtime="20230207 02:21:28.331"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.331" level="INFO">202</msg>
+<status status="PASS" starttime="20230207 02:21:28.331" endtime="20230207 02:21:28.331"/>
+</kw>
+<for flavor="IN">
+<var>${scode}</var>
+<value>@{statuscode}</value>
+<iter>
+<var name="${scode}">200</var>
+<kw name="Log" library="BuiltIn">
+<arg>${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.331" level="INFO">200</msg>
+<status status="PASS" starttime="20230207 02:21:28.331" endtime="20230207 02:21:28.331"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${response.status_code} == ${scode}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20230207 02:21:28.331" endtime="20230207 02:21:28.331"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:28.331" endtime="20230207 02:21:28.331"/>
+</iter>
+<iter>
+<var name="${scode}">201</var>
+<kw name="Log" library="BuiltIn">
+<arg>${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.347" level="INFO">201</msg>
+<status status="PASS" starttime="20230207 02:21:28.331" endtime="20230207 02:21:28.347"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${response.status_code} == ${scode}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20230207 02:21:28.347" endtime="20230207 02:21:28.347"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:28.331" endtime="20230207 02:21:28.347"/>
+</iter>
+<iter>
+<var name="${scode}">202</var>
+<kw name="Log" library="BuiltIn">
+<arg>${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.350" level="INFO">202</msg>
+<status status="PASS" starttime="20230207 02:21:28.347" endtime="20230207 02:21:28.350"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${response.status_code} == ${scode}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<msg timestamp="20230207 02:21:28.350" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20230207 02:21:28.350" endtime="20230207 02:21:28.350"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:28.347" endtime="20230207 02:21:28.350"/>
+</iter>
+<status status="PASS" starttime="20230207 02:21:28.331" endtime="20230207 02:21:28.350"/>
+</for>
+<msg timestamp="20230207 02:21:28.350" level="INFO">${status_code} = 202</msg>
+<msg timestamp="20230207 02:21:28.350" level="INFO">${scode} = 202</msg>
+<status status="PASS" starttime="20230207 02:21:28.018" endtime="20230207 02:21:28.350"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${status_code} ${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.350" level="INFO">202 202</msg>
+<status status="PASS" starttime="20230207 02:21:28.350" endtime="20230207 02:21:28.350"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>${scode}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230207 02:21:28.356" endtime="20230207 02:21:28.356"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Hero with Status code ${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.356" level="INFO">Hero with Status code 202</msg>
+<status status="PASS" starttime="20230207 02:21:28.356" endtime="20230207 02:21:28.356"/>
+</kw>
+<doc>AC1 : Insert single record of Working class hero with Natural Id(natid), Name, Gender, Birthday, Salary and Tax paid</doc>
+<tag>api</tag>
+<tag>regression</tag>
+<status status="PASS" starttime="20230207 02:21:28.018" endtime="20230207 02:21:28.356"/>
+</test>
+<test id="s1-t2" name="UStory01_Insertion Invalid date for Working Class Hero" line="19">
+<kw name="post_action_invalid_date_Insertion" library="api">
+<var>${status_message}</var>
+<kw name="Date_invalid_insertion" library="api">
+<var>${hero}</var>
+<kw name="Get Data Insert" library="fileGen">
+<var>${record}</var>
+<arg>${record4}</arg>
+<msg timestamp="20230207 02:21:28.358" level="INFO">${record} = natid=54756,name=Michale,gender=F,birthday=2001-12-27,salary=55000,tax=4500</msg>
+<status status="PASS" starttime="20230207 02:21:28.358" endtime="20230207 02:21:28.358"/>
+</kw>
+<kw name="Create Dictionary On" library="fileGen">
+<var>${hero}</var>
+<arg>${record}</arg>
+<msg timestamp="20230207 02:21:28.358" level="INFO">${hero} = {'natid': '54756', 'name': 'Michale', 'gender': 'F', 'birthday': '2001-12-27', 'salary': '55000', 'tax': '4500'}</msg>
+<status status="PASS" starttime="20230207 02:21:28.358" endtime="20230207 02:21:28.358"/>
+</kw>
+<msg timestamp="20230207 02:21:28.358" level="INFO">${hero} = {'natid': '54756', 'name': 'Michale', 'gender': 'F', 'birthday': '2001-12-27', 'salary': '55000', 'tax': '4500'}</msg>
+<status status="PASS" starttime="20230207 02:21:28.358" endtime="20230207 02:21:28.358"/>
+</kw>
+<kw name="Postvalidate" library="fileGen">
+<var>${get_validation_error}</var>
+<arg>${hero}</arg>
+<msg timestamp="20230207 02:21:28.418" level="INFO">${get_validation_error} = (500, 'Internal Server Error', "Text '2001-12-27' could not be parsed at index 5")</msg>
+<status status="PASS" starttime="20230207 02:21:28.358" endtime="20230207 02:21:28.418"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${get_validation_error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.418" level="INFO">(500, 'Internal Server Error', "Text '2001-12-27' could not be parsed at index 5")</msg>
+<status status="PASS" starttime="20230207 02:21:28.418" endtime="20230207 02:21:28.418"/>
+</kw>
+<msg timestamp="20230207 02:21:28.418" level="INFO">${status_message} = (500, 'Internal Server Error', "Text '2001-12-27' could not be parsed at index 5")</msg>
+<status status="PASS" starttime="20230207 02:21:28.358" endtime="20230207 02:21:28.418"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${status_message}</arg>
+<arg>Internal Server Error</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230207 02:21:28.418" endtime="20230207 02:21:28.418"/>
+</kw>
+<doc>AC1-1 : Insert single record of Working class hero with invalid Birthday</doc>
+<tag>api</tag>
+<tag>regression</tag>
+<status status="PASS" starttime="20230207 02:21:28.358" endtime="20230207 02:21:28.418"/>
+</test>
+<test id="s1-t3" name="UStory02_Insert Multiple Working Class Hero" line="25">
+<kw name="post_action_multiple_Insert" library="api">
+<var>${status_code}</var>
+<var>${scode}</var>
+<kw name="Multiple_insert" library="api">
+<var>${hero}</var>
+<var>${heros}</var>
+<kw name="Session_create" library="common">
+<var>${heros}</var>
+<kw name="Create Session" library="RequestsLibrary">
+<var>${heros}</var>
+<arg>${sessionName}</arg>
+<arg>${url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230207 02:21:28.418" level="INFO">Creating Session using : alias=heros, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg timestamp="20230207 02:21:28.426" level="INFO">${heros} = &lt;requests.sessions.Session object at 0x000002063C2194E0&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:28.418" endtime="20230207 02:21:28.426"/>
+</kw>
+<msg timestamp="20230207 02:21:28.426" level="INFO">${heros} = &lt;requests.sessions.Session object at 0x000002063C2194E0&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:28.418" endtime="20230207 02:21:28.426"/>
+</kw>
+<kw name="Get Data Insert" library="fileGen">
+<var>${recordx}</var>
+<arg>${record2}</arg>
+<msg timestamp="20230207 02:21:28.426" level="INFO">${recordx} = natid=123456,name=John Doe,gender=M,birthday=16082000,salary=50000,tax=5000</msg>
+<status status="PASS" starttime="20230207 02:21:28.426" endtime="20230207 02:21:28.426"/>
+</kw>
+<kw name="Create Dictionary On" library="fileGen">
+<var>${list1}</var>
+<arg>${recordx}</arg>
+<msg timestamp="20230207 02:21:28.428" level="INFO">${list1} = {'natid': '123456', 'name': 'John Doe', 'gender': 'M', 'birthday': '16082000', 'salary': '50000', 'tax': '5000'}</msg>
+<status status="PASS" starttime="20230207 02:21:28.426" endtime="20230207 02:21:28.428"/>
+</kw>
+<kw name="Get Data Insert" library="fileGen">
+<var>${recordxx}</var>
+<arg>${record3}</arg>
+<msg timestamp="20230207 02:21:28.428" level="INFO">${recordxx} = natid=789012,name=Janet Sara,gender=F,birthday=01011995,salary=60000,tax=6000</msg>
+<status status="PASS" starttime="20230207 02:21:28.428" endtime="20230207 02:21:28.428"/>
+</kw>
+<kw name="Create Dictionary On" library="fileGen">
+<var>${list2}</var>
+<arg>${recordxx}</arg>
+<msg timestamp="20230207 02:21:28.428" level="INFO">${list2} = {'natid': '789012', 'name': 'Janet Sara', 'gender': 'F', 'birthday': '01011995', 'salary': '60000', 'tax': '6000'}</msg>
+<status status="PASS" starttime="20230207 02:21:28.428" endtime="20230207 02:21:28.428"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${hero}</var>
+<arg>${list1}</arg>
+<arg>${list2}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20230207 02:21:28.428" level="INFO">${hero} = [{'natid': '123456', 'name': 'John Doe', 'gender': 'M', 'birthday': '16082000', 'salary': '50000', 'tax': '5000'}, {'natid': '789012', 'name': 'Janet Sara', 'gender': 'F', 'birthday': '01011995', 'sal...</msg>
+<status status="PASS" starttime="20230207 02:21:28.428" endtime="20230207 02:21:28.428"/>
+</kw>
+<msg timestamp="20230207 02:21:28.428" level="INFO">${hero} = [{'natid': '123456', 'name': 'John Doe', 'gender': 'M', 'birthday': '16082000', 'salary': '50000', 'tax': '5000'}, {'natid': '789012', 'name': 'Janet Sara', 'gender': 'F', 'birthday': '01011995', 'sal...</msg>
+<msg timestamp="20230207 02:21:28.428" level="INFO">${heros} = &lt;requests.sessions.Session object at 0x000002063C2194E0&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:28.418" endtime="20230207 02:21:28.428"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${heros}</arg>
+<arg>${insertmultiple}</arg>
+<arg>json=${hero}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230207 02:21:28.449" level="INFO">POST Request : url=http://localhost:8080/calculator/insertMultiple 
+ path_url=/calculator/insertMultiple 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '230', 'Content-Type': 'application/json'} 
+ body=b'[{"natid": "123456", "name": "John Doe", "gender": "M", "birthday": "16082000", "salary": "50000", "tax": "5000"}, {"natid": "789012", "name": "Janet Sara", "gender": "F", "birthday": "01011995", "salary": "60000", "tax": "6000"}]' 
+ </msg>
+<msg timestamp="20230207 02:21:28.449" level="INFO">POST Response : url=http://localhost:8080/calculator/insertMultiple 
+ status=202, reason= 
+ headers={'Content-Type': 'text/plain;charset=UTF-8', 'Content-Length': '7', 'Date': 'Mon, 06 Feb 2023 18:21:28 GMT'} 
+ body=Alright 
+ </msg>
+<msg timestamp="20230207 02:21:28.449" level="INFO">${response} = &lt;Response [202]&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:28.428" endtime="20230207 02:21:28.449"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.449" level="INFO">202</msg>
+<status status="PASS" starttime="20230207 02:21:28.449" endtime="20230207 02:21:28.449"/>
+</kw>
+<for flavor="IN">
+<var>${scode}</var>
+<value>@{statuscode}</value>
+<iter>
+<var name="${scode}">200</var>
+<kw name="Log" library="BuiltIn">
+<arg>${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.457" level="INFO">200</msg>
+<status status="PASS" starttime="20230207 02:21:28.457" endtime="20230207 02:21:28.457"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${response.status_code} == ${scode}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20230207 02:21:28.457" endtime="20230207 02:21:28.459"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:28.449" endtime="20230207 02:21:28.459"/>
+</iter>
+<iter>
+<var name="${scode}">201</var>
+<kw name="Log" library="BuiltIn">
+<arg>${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.459" level="INFO">201</msg>
+<status status="PASS" starttime="20230207 02:21:28.459" endtime="20230207 02:21:28.459"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${response.status_code} == ${scode}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20230207 02:21:28.459" endtime="20230207 02:21:28.459"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:28.459" endtime="20230207 02:21:28.459"/>
+</iter>
+<iter>
+<var name="${scode}">202</var>
+<kw name="Log" library="BuiltIn">
+<arg>${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.459" level="INFO">202</msg>
+<status status="PASS" starttime="20230207 02:21:28.459" endtime="20230207 02:21:28.459"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${response.status_code} == ${scode}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<msg timestamp="20230207 02:21:28.467" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20230207 02:21:28.459" endtime="20230207 02:21:28.467"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:28.459" endtime="20230207 02:21:28.467"/>
+</iter>
+<status status="PASS" starttime="20230207 02:21:28.449" endtime="20230207 02:21:28.467"/>
+</for>
+<msg timestamp="20230207 02:21:28.467" level="INFO">${status_code} = 202</msg>
+<msg timestamp="20230207 02:21:28.467" level="INFO">${scode} = 202</msg>
+<status status="PASS" starttime="20230207 02:21:28.418" endtime="20230207 02:21:28.467"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${status_code} ${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.469" level="INFO">202 202</msg>
+<status status="PASS" starttime="20230207 02:21:28.469" endtime="20230207 02:21:28.469"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>${scode}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230207 02:21:28.469" endtime="20230207 02:21:28.469"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Hero with Status code ${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.469" level="INFO">Hero with Status code 202</msg>
+<status status="PASS" starttime="20230207 02:21:28.469" endtime="20230207 02:21:28.469"/>
+</kw>
+<doc>AC1 : Ability to Inserting Working class hero multiple records in form of list.</doc>
+<tag>api</tag>
+<tag>regression</tag>
+<status status="PASS" starttime="20230207 02:21:28.418" endtime="20230207 02:21:28.469"/>
+</test>
+<test id="s1-t4" name="UStory03_Check First Row must be with column names" line="33">
+<kw name="Csv_validation_first_row" library="common">
+<var>${results}</var>
+<kw name="Get Path" library="fileGen">
+<var>${getpath}</var>
+<arg>${FILE_PATH}</arg>
+<msg timestamp="20230207 02:21:28.469" level="INFO">${getpath} = F:\py_file\dOcean\QA_Assignment\Resources\pages\utils\SampleCSVFile_2kb.csv</msg>
+<status status="PASS" starttime="20230207 02:21:28.469" endtime="20230207 02:21:28.469"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getpath}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.469" level="INFO">F:\py_file\dOcean\QA_Assignment\Resources\pages\utils\SampleCSVFile_2kb.csv</msg>
+<status status="PASS" starttime="20230207 02:21:28.469" endtime="20230207 02:21:28.469"/>
+</kw>
+<kw name="Validate Csv" library="fileGen">
+<var>${csvdata}</var>
+<arg>${getpath}</arg>
+<arg>Column headers are correct</arg>
+<arg>First_Row</arg>
+<msg timestamp="20230207 02:21:28.469" level="INFO">${csvdata} = Column headers are correct</msg>
+<status status="PASS" starttime="20230207 02:21:28.469" endtime="20230207 02:21:28.469"/>
+</kw>
+<msg timestamp="20230207 02:21:28.469" level="INFO">${results} = Column headers are correct</msg>
+<status status="PASS" starttime="20230207 02:21:28.469" endtime="20230207 02:21:28.469"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${results}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.477" level="INFO">Column headers are correct</msg>
+<status status="PASS" starttime="20230207 02:21:28.477" endtime="20230207 02:21:28.477"/>
+</kw>
+<doc>AC1 : Check first row csv must be with columns(natid, name, gender, salary, birthday, tax)</doc>
+<tag>api</tag>
+<tag>regression</tag>
+<status status="PASS" starttime="20230207 02:21:28.469" endtime="20230207 02:21:28.477"/>
+</test>
+<test id="s1-t5" name="UStory03_Check other subsquent rows should be with relevant details" line="39">
+<kw name="validate_subsequent_row" library="common">
+<var>${results}</var>
+<kw name="Get Path" library="fileGen">
+<var>${getpath}</var>
+<arg>${FILE_PATH}</arg>
+<msg timestamp="20230207 02:21:28.479" level="INFO">${getpath} = F:\py_file\dOcean\QA_Assignment\Resources\pages\utils\SampleCSVFile_2kb.csv</msg>
+<status status="PASS" starttime="20230207 02:21:28.479" endtime="20230207 02:21:28.479"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getpath}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.479" level="INFO">F:\py_file\dOcean\QA_Assignment\Resources\pages\utils\SampleCSVFile_2kb.csv</msg>
+<status status="PASS" starttime="20230207 02:21:28.479" endtime="20230207 02:21:28.479"/>
+</kw>
+<kw name="Validate Csv" library="fileGen">
+<var>${csvdata}</var>
+<arg>${getpath}</arg>
+<arg>Column headers are correct</arg>
+<arg>Subsq_Row</arg>
+<msg timestamp="20230207 02:21:28.479" level="INFO">${csvdata} = Column headers are correct</msg>
+<status status="PASS" starttime="20230207 02:21:28.479" endtime="20230207 02:21:28.479"/>
+</kw>
+<msg timestamp="20230207 02:21:28.479" level="INFO">${results} = Column headers are correct</msg>
+<status status="PASS" starttime="20230207 02:21:28.479" endtime="20230207 02:21:28.479"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${results}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:28.479" level="INFO">Column headers are correct</msg>
+<status status="PASS" starttime="20230207 02:21:28.479" endtime="20230207 02:21:28.479"/>
+</kw>
+<doc>AC2 : Check subsquent rows are with relevant details</doc>
+<tag>api</tag>
+<tag>regression</tag>
+<status status="PASS" starttime="20230207 02:21:28.477" endtime="20230207 02:21:28.479"/>
+</test>
+<test id="s1-t6" name="UStory03_Upload CSV File with details of Working Class Heros" line="45">
+<kw name="Launch_browser" library="ui">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${brower}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230207 02:21:28.488" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:8080'.</msg>
+<status status="PASS" starttime="20230207 02:21:28.487" endtime="20230207 02:21:32.383"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230207 02:21:32.383" endtime="20230207 02:21:32.541"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:28.479" endtime="20230207 02:21:32.541"/>
+</kw>
+<kw name="Upload_csv_file" library="ui">
+<kw name="Get Path" library="fileGen">
+<var>${getpath}</var>
+<arg>${FILE_PATH}</arg>
+<msg timestamp="20230207 02:21:32.541" level="INFO">${getpath} = F:\py_file\dOcean\QA_Assignment\Resources\pages\utils\SampleCSVFile_2kb.csv</msg>
+<status status="PASS" starttime="20230207 02:21:32.541" endtime="20230207 02:21:32.541"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getpath}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:32.541" level="INFO">F:\py_file\dOcean\QA_Assignment\Resources\pages\utils\SampleCSVFile_2kb.csv</msg>
+<status status="PASS" starttime="20230207 02:21:32.541" endtime="20230207 02:21:32.541"/>
+</kw>
+<kw name="Choose File" library="SeleniumLibrary">
+<arg>${uploadcsv}</arg>
+<arg>${getpath}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<msg timestamp="20230207 02:21:32.541" level="INFO">Sending F:\py_file\dOcean\QA_Assignment\Resources\pages\utils\SampleCSVFile_2kb.csv to browser.</msg>
+<status status="PASS" starttime="20230207 02:21:32.541" endtime="20230207 02:21:32.593"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230207 02:21:37.603" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230207 02:21:32.593" endtime="20230207 02:21:37.603"/>
+</kw>
+<kw name="Reload Page" library="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" starttime="20230207 02:21:37.603" endtime="20230207 02:21:37.935"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:32.541" endtime="20230207 02:21:37.935"/>
+</kw>
+<kw name="get_all_natid_details" library="ui">
+<var>${getnat_list}</var>
+<kw name="Create List" library="BuiltIn">
+<var>${textlink}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20230207 02:21:37.950" level="INFO">${textlink} = []</msg>
+<status status="PASS" starttime="20230207 02:21:37.949" endtime="20230207 02:21:37.950"/>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${tget5}</var>
+<arg>${get_details_natid}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20230207 02:21:37.972" level="INFO">${tget5} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="fc6f323a-47ec-43a8-8e7f-c5f7911d3bb2")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20230207 02:21:37.950" endtime="20230207 02:21:37.972"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${tget5}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:37.973" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="fc6f323a-47ec-43a8-8e7f-c5f7911d3bb2")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="3929ea77-502d-4e0b-b5af-c29cb231ea1d")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="174c46cc-cbb2-4bde-a1c5-0cd442f03cfc")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="eef16dd3-70b6-4410-9c7c-b0fb80ae9ce3")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="00f6ed79-c194-4ba4-a84f-8d4017aaa352")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="7a49924f-fc6b-4897-85ab-4e3809b7b760")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="dda8a21e-fab8-4c6e-b86d-64bb2ea2ba4a")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="a9e50200-e899-440b-bfb6-c77e2d8503ad")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="1f83735c-7153-45f7-be35-f47d8bd596fa")&gt;]</msg>
+<status status="PASS" starttime="20230207 02:21:37.973" endtime="20230207 02:21:37.973"/>
+</kw>
+<for flavor="IN">
+<var>${items}</var>
+<value>@{tget5}</value>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="fc6f323a-47ec-43a8-8e7f-c5f7911d3bb2")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:37.992" level="INFO">${link_text} = 1231$$$</msg>
+<status status="PASS" starttime="20230207 02:21:37.974" endtime="20230207 02:21:37.992"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:37.993" level="INFO">1231$$$</msg>
+<status status="PASS" starttime="20230207 02:21:37.992" endtime="20230207 02:21:37.993"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:37.993" endtime="20230207 02:21:37.993"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:37.973" endtime="20230207 02:21:37.993"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="3929ea77-502d-4e0b-b5af-c29cb231ea1d")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:38.011" level="INFO">${link_text} = 1234$$</msg>
+<status status="PASS" starttime="20230207 02:21:37.994" endtime="20230207 02:21:38.011"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:38.012" level="INFO">1234$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.012" endtime="20230207 02:21:38.012"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:38.012" endtime="20230207 02:21:38.013"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:37.994" endtime="20230207 02:21:38.013"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="174c46cc-cbb2-4bde-a1c5-0cd442f03cfc")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:38.031" level="INFO">${link_text} = 7890$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.013" endtime="20230207 02:21:38.031"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:38.031" level="INFO">7890$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.031" endtime="20230207 02:21:38.031"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:38.032" endtime="20230207 02:21:38.032"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:38.013" endtime="20230207 02:21:38.032"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="eef16dd3-70b6-4410-9c7c-b0fb80ae9ce3")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:38.050" level="INFO">${link_text} = 111-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.032" endtime="20230207 02:21:38.050"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:38.051" level="INFO">111-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.050" endtime="20230207 02:21:38.051"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:38.051" endtime="20230207 02:21:38.051"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:38.032" endtime="20230207 02:21:38.051"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="00f6ed79-c194-4ba4-a84f-8d4017aaa352")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:38.069" level="INFO">${link_text} = 112-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.052" endtime="20230207 02:21:38.069"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:38.069" level="INFO">112-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.069" endtime="20230207 02:21:38.069"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:38.070" endtime="20230207 02:21:38.070"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:38.052" endtime="20230207 02:21:38.070"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="7a49924f-fc6b-4897-85ab-4e3809b7b760")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:38.088" level="INFO">${link_text} = 113-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.070" endtime="20230207 02:21:38.088"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:38.088" level="INFO">113-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.088" endtime="20230207 02:21:38.088"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:38.089" endtime="20230207 02:21:38.089"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:38.070" endtime="20230207 02:21:38.089"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="dda8a21e-fab8-4c6e-b86d-64bb2ea2ba4a")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:38.106" level="INFO">${link_text} = 114-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.089" endtime="20230207 02:21:38.106"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:38.107" level="INFO">114-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.107" endtime="20230207 02:21:38.107"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:38.107" endtime="20230207 02:21:38.108"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:38.089" endtime="20230207 02:21:38.108"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="a9e50200-e899-440b-bfb6-c77e2d8503ad")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:38.125" level="INFO">${link_text} = 115-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.108" endtime="20230207 02:21:38.126"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:38.126" level="INFO">115-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.126" endtime="20230207 02:21:38.126"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:38.126" endtime="20230207 02:21:38.127"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:38.108" endtime="20230207 02:21:38.127"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="1f83735c-7153-45f7-be35-f47d8bd596fa")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:38.145" level="INFO">${link_text} = 116-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.127" endtime="20230207 02:21:38.145"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:38.145" level="INFO">116-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:38.145" endtime="20230207 02:21:38.145"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:38.146" endtime="20230207 02:21:38.146"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:38.127" endtime="20230207 02:21:38.146"/>
+</iter>
+<status status="PASS" starttime="20230207 02:21:37.973" endtime="20230207 02:21:38.146"/>
+</for>
+<msg timestamp="20230207 02:21:38.146" level="INFO">${getnat_list} = ['1231$$$', '1234$$', '7890$$', '111-$$$$$$$$$$$$$', '112-$$$$$$$$$$$$$', '113-$$$$$$$$$$$$$', '114-$$$$$$$$$$$$$', '115-$$$$$$$$$$$$$', '116-$$$$$$$$$$$$$']</msg>
+<status status="PASS" starttime="20230207 02:21:37.949" endtime="20230207 02:21:38.147"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getnat_list}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:38.148" level="INFO">['1231$$$', '1234$$', '7890$$', '111-$$$$$$$$$$$$$', '112-$$$$$$$$$$$$$', '113-$$$$$$$$$$$$$', '114-$$$$$$$$$$$$$', '115-$$$$$$$$$$$$$', '116-$$$$$$$$$$$$$']</msg>
+<status status="PASS" starttime="20230207 02:21:38.147" endtime="20230207 02:21:38.148"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${getnat_list}</arg>
+<arg>115-$$$$$$$$$$$$$</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230207 02:21:38.148" endtime="20230207 02:21:38.149"/>
+</kw>
+<doc>AC3 : Upload the working class heros details in form of csv file via portal</doc>
+<tag>regression</tag>
+<tag>ui</tag>
+<status status="PASS" starttime="20230207 02:21:28.479" endtime="20230207 02:21:38.149"/>
+</test>
+<test id="s1-t7" name="UStory03_Upload CSV File with details of invalid birthday date format of Working Class Heros" line="55">
+<kw name="Upload_invalid_date_csv_file" library="ui">
+<kw name="Get Path" library="fileGen">
+<var>${getpath}</var>
+<arg>${File_invalid_data}</arg>
+<msg timestamp="20230207 02:21:38.152" level="INFO">${getpath} = F:\py_file\dOcean\QA_Assignment\Resources\pages\utils\invaliddate.csv</msg>
+<status status="PASS" starttime="20230207 02:21:38.151" endtime="20230207 02:21:38.152"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getpath}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:38.152" level="INFO">F:\py_file\dOcean\QA_Assignment\Resources\pages\utils\invaliddate.csv</msg>
+<status status="PASS" starttime="20230207 02:21:38.152" endtime="20230207 02:21:38.152"/>
+</kw>
+<kw name="Choose File" library="SeleniumLibrary">
+<arg>${uploadcsv}</arg>
+<arg>${getpath}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<msg timestamp="20230207 02:21:38.153" level="INFO">Sending F:\py_file\dOcean\QA_Assignment\Resources\pages\utils\invaliddate.csv to browser.</msg>
+<status status="PASS" starttime="20230207 02:21:38.152" endtime="20230207 02:21:38.197"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230207 02:21:43.202" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230207 02:21:38.197" endtime="20230207 02:21:43.202"/>
+</kw>
+<kw name="Reload Page" library="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" starttime="20230207 02:21:43.202" endtime="20230207 02:21:43.498"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:38.151" endtime="20230207 02:21:43.498"/>
+</kw>
+<kw name="get_all_natid_details" library="ui">
+<var>${getnat_list}</var>
+<kw name="Create List" library="BuiltIn">
+<var>${textlink}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20230207 02:21:43.504" level="INFO">${textlink} = []</msg>
+<status status="PASS" starttime="20230207 02:21:43.504" endtime="20230207 02:21:43.504"/>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${tget5}</var>
+<arg>${get_details_natid}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.526" level="INFO">${tget5} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="5d9c3823-61fc-415d-a5a1-097bcc981e0a")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20230207 02:21:43.504" endtime="20230207 02:21:43.526"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${tget5}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.527" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="5d9c3823-61fc-415d-a5a1-097bcc981e0a")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="880bb445-8654-49a7-9400-fc0303d40626")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="40473434-7412-42a8-897f-b648a17cfdf1")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="0e63c483-9c86-4a41-8408-c4896cc8a332")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="dd662b67-c3a1-4125-a293-fcefd0d8cff9")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="14c869d2-91ed-4e66-8352-e51b77069e68")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="2197eac5-a04b-4a07-8753-a32408c3dad6")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="b60d79da-1da8-4c5a-80b5-0c36ed3c3b00")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="eaaf690e-e952-4d8d-b198-b49bbfa50469")&gt;]</msg>
+<status status="PASS" starttime="20230207 02:21:43.527" endtime="20230207 02:21:43.527"/>
+</kw>
+<for flavor="IN">
+<var>${items}</var>
+<value>@{tget5}</value>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="5d9c3823-61fc-415d-a5a1-097bcc981e0a")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.547" level="INFO">${link_text} = 1231$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.528" endtime="20230207 02:21:43.547"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.548" level="INFO">1231$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.548" endtime="20230207 02:21:43.548"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:43.548" endtime="20230207 02:21:43.549"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:43.527" endtime="20230207 02:21:43.549"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="880bb445-8654-49a7-9400-fc0303d40626")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.567" level="INFO">${link_text} = 1234$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.549" endtime="20230207 02:21:43.567"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.568" level="INFO">1234$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.568" endtime="20230207 02:21:43.568"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:43.568" endtime="20230207 02:21:43.569"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:43.549" endtime="20230207 02:21:43.569"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="40473434-7412-42a8-897f-b648a17cfdf1")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.586" level="INFO">${link_text} = 7890$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.569" endtime="20230207 02:21:43.587"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.587" level="INFO">7890$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.587" endtime="20230207 02:21:43.587"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:43.587" endtime="20230207 02:21:43.588"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:43.569" endtime="20230207 02:21:43.588"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="0e63c483-9c86-4a41-8408-c4896cc8a332")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.606" level="INFO">${link_text} = 111-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.588" endtime="20230207 02:21:43.607"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.607" level="INFO">111-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.607" endtime="20230207 02:21:43.607"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:43.607" endtime="20230207 02:21:43.608"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:43.588" endtime="20230207 02:21:43.608"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="dd662b67-c3a1-4125-a293-fcefd0d8cff9")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.626" level="INFO">${link_text} = 112-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.608" endtime="20230207 02:21:43.626"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.627" level="INFO">112-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.626" endtime="20230207 02:21:43.627"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:43.627" endtime="20230207 02:21:43.627"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:43.608" endtime="20230207 02:21:43.627"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="14c869d2-91ed-4e66-8352-e51b77069e68")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.645" level="INFO">${link_text} = 113-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.628" endtime="20230207 02:21:43.645"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.646" level="INFO">113-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.645" endtime="20230207 02:21:43.646"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:43.646" endtime="20230207 02:21:43.646"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:43.627" endtime="20230207 02:21:43.647"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="2197eac5-a04b-4a07-8753-a32408c3dad6")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.666" level="INFO">${link_text} = 114-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.647" endtime="20230207 02:21:43.666"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.667" level="INFO">114-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.667" endtime="20230207 02:21:43.667"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:43.667" endtime="20230207 02:21:43.668"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:43.647" endtime="20230207 02:21:43.668"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="b60d79da-1da8-4c5a-80b5-0c36ed3c3b00")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.687" level="INFO">${link_text} = 115-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.668" endtime="20230207 02:21:43.687"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.687" level="INFO">115-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.687" endtime="20230207 02:21:43.687"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:43.687" endtime="20230207 02:21:43.688"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:43.668" endtime="20230207 02:21:43.688"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="eaaf690e-e952-4d8d-b198-b49bbfa50469")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.707" level="INFO">${link_text} = 116-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.688" endtime="20230207 02:21:43.707"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.707" level="INFO">116-$$$$$$$$$$$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.707" endtime="20230207 02:21:43.708"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:43.708" endtime="20230207 02:21:43.708"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:43.688" endtime="20230207 02:21:43.708"/>
+</iter>
+<status status="PASS" starttime="20230207 02:21:43.527" endtime="20230207 02:21:43.708"/>
+</for>
+<msg timestamp="20230207 02:21:43.709" level="INFO">${getnat_list} = ['1231$$$', '1234$$', '7890$$', '111-$$$$$$$$$$$$$', '112-$$$$$$$$$$$$$', '113-$$$$$$$$$$$$$', '114-$$$$$$$$$$$$$', '115-$$$$$$$$$$$$$', '116-$$$$$$$$$$$$$']</msg>
+<status status="PASS" starttime="20230207 02:21:43.503" endtime="20230207 02:21:43.709"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getnat_list}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.709" level="INFO">['1231$$$', '1234$$', '7890$$', '111-$$$$$$$$$$$$$', '112-$$$$$$$$$$$$$', '113-$$$$$$$$$$$$$', '114-$$$$$$$$$$$$$', '115-$$$$$$$$$$$$$', '116-$$$$$$$$$$$$$']</msg>
+<status status="PASS" starttime="20230207 02:21:43.709" endtime="20230207 02:21:43.710"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${getnat_list}</arg>
+<arg>222-$$$$</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230207 02:21:43.710" endtime="20230207 02:21:43.710"/>
+</kw>
+<doc>AC3-1 : Upload working class details with invalid date format for birthday</doc>
+<tag>regression</tag>
+<tag>ui</tag>
+<status status="PASS" starttime="20230207 02:21:38.150" endtime="20230207 02:21:43.711"/>
+</test>
+<test id="s1-t8" name="UStory04_Retrieve the list of tax relief" line="64">
+<kw name="get_action_tax_relief_summary" library="api">
+<var>${status_code}</var>
+<var>${scode}</var>
+<kw name="Session_create" library="common">
+<var>${heros}</var>
+<kw name="Create Session" library="RequestsLibrary">
+<var>${heros}</var>
+<arg>${sessionName}</arg>
+<arg>${url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230207 02:21:43.714" level="INFO">Creating Session using : alias=heros, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg timestamp="20230207 02:21:43.715" level="INFO">${heros} = &lt;requests.sessions.Session object at 0x000002063C21A7D0&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:43.714" endtime="20230207 02:21:43.715"/>
+</kw>
+<msg timestamp="20230207 02:21:43.715" level="INFO">${heros} = &lt;requests.sessions.Session object at 0x000002063C21A7D0&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:43.713" endtime="20230207 02:21:43.715"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${heros}</arg>
+<arg>${taxrelief}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230207 02:21:43.728" level="INFO">GET Request : url=http://localhost:8080/calculator/taxRelief 
+ path_url=/calculator/taxRelief 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230207 02:21:43.729" level="INFO">GET Response : url=http://localhost:8080/calculator/taxRelief 
+ status=200, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 06 Feb 2023 18:21:43 GMT'} 
+ body=[{"natid":"1231$$$","name":"John Smith","relief":"39200.00"},{"natid":"1234$$","name":"John Doe","relief":"36000.00"},{"natid":"7890$$","name":"Janet Sara","relief":"43700.00"},{"natid":"111-$$$$$$$$$$$$$","name":"Muhammed MacIntyre","relief":"4600.00"},{"natid":"112-$$$$$$$$$$$$$","name":"Barry French","relief":"819.85"},{"natid":"113-$$$$$$$$$$$$$","name":"Barry French","relief":"50.00"},{"natid":"114-$$$$$$$$$$$$$","name":"Clay Rozendal","relief":"995.00"},{"natid":"115-$$$$$$$$$$$$$","name":"dfgdfgdfgdM","relief":"0"},{"natid":"116-$$$$$$$$$$$$$","name":"Muhammed MacIntyrexxxxxxxxx","relief":"4937.00"}] 
+ </msg>
+<msg timestamp="20230207 02:21:43.729" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:43.715" endtime="20230207 02:21:43.729"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.731" level="INFO">200</msg>
+<status status="PASS" starttime="20230207 02:21:43.730" endtime="20230207 02:21:43.731"/>
+</kw>
+<for flavor="IN">
+<var>${scode}</var>
+<value>@{statuscode}</value>
+<iter>
+<var name="${scode}">200</var>
+<kw name="Log" library="BuiltIn">
+<arg>${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.732" level="INFO">200</msg>
+<status status="PASS" starttime="20230207 02:21:43.732" endtime="20230207 02:21:43.732"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${response.status_code} == ${scode}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<msg timestamp="20230207 02:21:43.734" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20230207 02:21:43.732" endtime="20230207 02:21:43.734"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:43.731" endtime="20230207 02:21:43.735"/>
+</iter>
+<status status="PASS" starttime="20230207 02:21:43.731" endtime="20230207 02:21:43.735"/>
+</for>
+<msg timestamp="20230207 02:21:43.736" level="INFO">${status_code} = 200</msg>
+<msg timestamp="20230207 02:21:43.736" level="INFO">${scode} = 200</msg>
+<status status="PASS" starttime="20230207 02:21:43.713" endtime="20230207 02:21:43.736"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${status_code} ${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.740" level="INFO">200 200</msg>
+<status status="PASS" starttime="20230207 02:21:43.740" endtime="20230207 02:21:43.740"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>${scode}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230207 02:21:43.741" endtime="20230207 02:21:43.741"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Hero with Status code ${scode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.742" level="INFO">Hero with Status code 200</msg>
+<status status="PASS" starttime="20230207 02:21:43.741" endtime="20230207 02:21:43.742"/>
+</kw>
+<doc>AC1 : Retrieve the list of details consists of natid, tax relief and name.</doc>
+<tag>api</tag>
+<tag>regression</tag>
+<status status="PASS" starttime="20230207 02:21:43.712" endtime="20230207 02:21:43.742"/>
+</test>
+<test id="s1-t9" name="UStory04_Validate json schema for tax relief api" line="72">
+<kw name="verify_tax_relief_Json_schema" library="api">
+<var>${tax_relief_get_schema}</var>
+<kw name="Session_create" library="common">
+<var>${heros}</var>
+<kw name="Create Session" library="RequestsLibrary">
+<var>${heros}</var>
+<arg>${sessionName}</arg>
+<arg>${url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230207 02:21:43.746" level="INFO">Creating Session using : alias=heros, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg timestamp="20230207 02:21:43.746" level="INFO">${heros} = &lt;requests.sessions.Session object at 0x000002063C255150&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:43.745" endtime="20230207 02:21:43.746"/>
+</kw>
+<msg timestamp="20230207 02:21:43.746" level="INFO">${heros} = &lt;requests.sessions.Session object at 0x000002063C255150&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:43.745" endtime="20230207 02:21:43.746"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${heros}</arg>
+<arg>${taxrelief}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230207 02:21:43.746" level="INFO">GET Request : url=http://localhost:8080/calculator/taxRelief 
+ path_url=/calculator/taxRelief 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230207 02:21:43.746" level="INFO">GET Response : url=http://localhost:8080/calculator/taxRelief 
+ status=200, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 06 Feb 2023 18:21:43 GMT'} 
+ body=[{"natid":"1231$$$","name":"John Smith","relief":"39200.00"},{"natid":"1234$$","name":"John Doe","relief":"36000.00"},{"natid":"7890$$","name":"Janet Sara","relief":"43700.00"},{"natid":"111-$$$$$$$$$$$$$","name":"Muhammed MacIntyre","relief":"4600.00"},{"natid":"112-$$$$$$$$$$$$$","name":"Barry French","relief":"819.85"},{"natid":"113-$$$$$$$$$$$$$","name":"Barry French","relief":"50.00"},{"natid":"114-$$$$$$$$$$$$$","name":"Clay Rozendal","relief":"995.00"},{"natid":"115-$$$$$$$$$$$$$","name":"dfgdfgdfgdM","relief":"0"},{"natid":"116-$$$$$$$$$$$$$","name":"Muhammed MacIntyrexxxxxxxxx","relief":"4937.00"}] 
+ </msg>
+<msg timestamp="20230207 02:21:43.746" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:43.746" endtime="20230207 02:21:43.746"/>
+</kw>
+<kw name="Get Schema Build" library="fileGen">
+<var>${schema}</var>
+<arg>${response.content}</arg>
+<msg timestamp="20230207 02:21:43.795" level="INFO">{'type': 'object', 'properties': {'natid': {'type': 'string'}, 'name': {'type': 'string'}, 'relief': {'type': 'string'}}}</msg>
+<msg timestamp="20230207 02:21:43.795" level="INFO">${schema} = SchemaValidation : JSON Data is valid</msg>
+<status status="PASS" starttime="20230207 02:21:43.746" endtime="20230207 02:21:43.795"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${schema}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.795" level="INFO">SchemaValidation : JSON Data is valid</msg>
+<status status="PASS" starttime="20230207 02:21:43.795" endtime="20230207 02:21:43.795"/>
+</kw>
+<msg timestamp="20230207 02:21:43.795" level="INFO">${tax_relief_get_schema} = SchemaValidation : JSON Data is valid</msg>
+<status status="PASS" starttime="20230207 02:21:43.744" endtime="20230207 02:21:43.795"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${tax_relief_get_schema}</arg>
+<arg>${schemavalid}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230207 02:21:43.803" endtime="20230207 02:21:43.805"/>
+</kw>
+<doc>AC1-1 : Validate json schema for tax relief get api method</doc>
+<tag>api</tag>
+<tag>regression</tag>
+<status status="PASS" starttime="20230207 02:21:43.743" endtime="20230207 02:21:43.805"/>
+</test>
+<test id="s1-t10" name="UStory04_Check natid 5th char masked with '$'" line="78">
+<kw name="Replace_mask_and_calculate_age" library="common">
+<var>${gxt}</var>
+<var>${getdicxx}</var>
+<var>${tax_relief}</var>
+<kw name="Age_factor" library="common">
+<var>${agex}</var>
+<kw name="Calculate Age" library="fileGen">
+<var>${age}</var>
+<arg>21021989</arg>
+<msg timestamp="20230207 02:21:43.805" level="INFO">${age} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.805" endtime="20230207 02:21:43.805"/>
+</kw>
+<msg timestamp="20230207 02:21:43.805" level="INFO">${agex} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.805" endtime="20230207 02:21:43.805"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${agex}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.805" level="INFO">33</msg>
+<status status="PASS" starttime="20230207 02:21:43.805" endtime="20230207 02:21:43.805"/>
+</kw>
+<kw name="Replace_chars" library="common">
+<var>${gxt}</var>
+<kw name="Repchars" library="fileGen">
+<var>${rchars}</var>
+<arg>111-222</arg>
+<msg timestamp="20230207 02:21:43.805" level="INFO">${rchars} = 111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.805" endtime="20230207 02:21:43.805"/>
+</kw>
+<msg timestamp="20230207 02:21:43.813" level="INFO">${gxt} = 111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.805" endtime="20230207 02:21:43.813"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${gxt}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.813" level="INFO">111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.813" endtime="20230207 02:21:43.813"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${getdicx}</var>
+<arg>natid=${gxt}</arg>
+<arg>name=John sr. Smith</arg>
+<arg>gender=M</arg>
+<arg>age=${agex}</arg>
+<arg>salary=457.81</arg>
+<arg>tax=58</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230207 02:21:43.815" level="INFO">${getdicx} = {'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.813" endtime="20230207 02:21:43.815"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getdicx}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.815" level="INFO">{'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.815" endtime="20230207 02:21:43.815"/>
+</kw>
+<kw name="Compute Tax Relief" library="fileGen">
+<var>${tax_relief}</var>
+<arg>${getdicx}</arg>
+<msg timestamp="20230207 02:21:43.815" level="INFO">${tax_relief} = {'natid': '$111-', 'relief': 319.85, 'name': 'John sr. Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.815" endtime="20230207 02:21:43.815"/>
+</kw>
+<kw name="Get Tax Relief" library="fileGen">
+<var>${masked}</var>
+<arg>${getdicx}</arg>
+<arg>natid</arg>
+<msg timestamp="20230207 02:21:43.815" level="INFO">{'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'} natid</msg>
+<msg timestamp="20230207 02:21:43.815" level="INFO">${masked} = 111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.815" endtime="20230207 02:21:43.815"/>
+</kw>
+<msg timestamp="20230207 02:21:43.815" level="INFO">${gxt} = 111-$$$</msg>
+<msg timestamp="20230207 02:21:43.815" level="INFO">${getdicxx} = {'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'}</msg>
+<msg timestamp="20230207 02:21:43.815" level="INFO">${tax_relief} = {'natid': '$111-', 'relief': 319.85, 'name': 'John sr. Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.805" endtime="20230207 02:21:43.815"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${gxt}</arg>
+<arg>111-$$$</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230207 02:21:43.815" endtime="20230207 02:21:43.815"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${gxt}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.815" level="INFO">111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.815" endtime="20230207 02:21:43.815"/>
+</kw>
+<kw name="get_natid_details" library="ui">
+<var>${tget}</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${tget1}</var>
+<arg>${get_details_natid}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.835" level="INFO">${tget1} = 1231$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.815" endtime="20230207 02:21:43.835"/>
+</kw>
+<msg timestamp="20230207 02:21:43.843" level="INFO">${tget} = 1231$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.815" endtime="20230207 02:21:43.843"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${tget}</arg>
+<arg>1231$$$</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230207 02:21:43.843" endtime="20230207 02:21:43.843"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${tget}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.843" level="INFO">1231$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.843" endtime="20230207 02:21:43.843"/>
+</kw>
+<doc>AC2 : Validate natid field must be masked from the 5th character onwards.</doc>
+<tag>regression</tag>
+<tag>ui</tag>
+<status status="PASS" starttime="20230207 02:21:43.805" endtime="20230207 02:21:43.845"/>
+</test>
+<test id="s1-t11" name="UStory04_Validate tax relief computation based described formula" line="88">
+<kw name="Compute_tax" library="common">
+<var>${tax_relief}</var>
+<kw name="Replace_and_calculate_age" library="common">
+<var>${hero}</var>
+<kw name="Age_factor" library="common">
+<var>${agex}</var>
+<kw name="Calculate Age" library="fileGen">
+<var>${age}</var>
+<arg>21021989</arg>
+<msg timestamp="20230207 02:21:43.845" level="INFO">${age} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.845" endtime="20230207 02:21:43.845"/>
+</kw>
+<msg timestamp="20230207 02:21:43.845" level="INFO">${agex} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.845" endtime="20230207 02:21:43.845"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${getdicx}</var>
+<arg>natid=1231234</arg>
+<arg>name=John Smith</arg>
+<arg>gender=M</arg>
+<arg>age=${agex}</arg>
+<arg>salary=50000</arg>
+<arg>tax=500</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230207 02:21:43.845" level="INFO">${getdicx} = {'natid': '1231234', 'name': 'John Smith', 'gender': 'M', 'age': 33, 'salary': '50000', 'tax': '500'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.845" endtime="20230207 02:21:43.845"/>
+</kw>
+<msg timestamp="20230207 02:21:43.845" level="INFO">${hero} = {'natid': '1231234', 'name': 'John Smith', 'gender': 'M', 'age': 33, 'salary': '50000', 'tax': '500'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.845" endtime="20230207 02:21:43.845"/>
+</kw>
+<kw name="Compute Tax Relief" library="fileGen">
+<var>${tax_relief}</var>
+<arg>${hero}</arg>
+<msg timestamp="20230207 02:21:43.854" level="INFO">${tax_relief} = {'natid': '$1231', 'relief': 39600.0, 'name': 'John Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.845" endtime="20230207 02:21:43.854"/>
+</kw>
+<msg timestamp="20230207 02:21:43.854" level="INFO">${tax_relief} = {'natid': '$1231', 'relief': 39600.0, 'name': 'John Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.845" endtime="20230207 02:21:43.854"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${tax_relief}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.854" level="INFO">{'natid': '$1231', 'relief': 39600.0, 'name': 'John Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.854" endtime="20230207 02:21:43.854"/>
+</kw>
+<kw name="get_relief_details" library="ui">
+<var>${tget1}</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${tget2}</var>
+<arg>${get_details_relief}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.886" level="INFO">${tget2} = 39200.00</msg>
+<status status="PASS" starttime="20230207 02:21:43.856" endtime="20230207 02:21:43.886"/>
+</kw>
+<msg timestamp="20230207 02:21:43.886" level="INFO">${tget1} = 39200.00</msg>
+<status status="PASS" starttime="20230207 02:21:43.854" endtime="20230207 02:21:43.886"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${tget1}</arg>
+<arg>39200.00</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230207 02:21:43.886" endtime="20230207 02:21:43.886"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${tget1}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.886" level="INFO">39200.00</msg>
+<status status="PASS" starttime="20230207 02:21:43.886" endtime="20230207 02:21:43.886"/>
+</kw>
+<doc>AC3 : validate tax relief computation based described formula</doc>
+<tag>regression</tag>
+<tag>ui</tag>
+<status status="PASS" starttime="20230207 02:21:43.845" endtime="20230207 02:21:43.886"/>
+</test>
+<test id="s1-t12" name="UStory04_Validate removal any decimal places after tax relief" line="97">
+<kw name="taxation_relief" library="common">
+<var>${taxrelief}</var>
+<kw name="Compute_tax" library="common">
+<var>${tax_relief}</var>
+<kw name="Replace_and_calculate_age" library="common">
+<var>${hero}</var>
+<kw name="Age_factor" library="common">
+<var>${agex}</var>
+<kw name="Calculate Age" library="fileGen">
+<var>${age}</var>
+<arg>21021989</arg>
+<msg timestamp="20230207 02:21:43.896" level="INFO">${age} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.896" endtime="20230207 02:21:43.896"/>
+</kw>
+<msg timestamp="20230207 02:21:43.896" level="INFO">${agex} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.896" endtime="20230207 02:21:43.896"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${getdicx}</var>
+<arg>natid=1231234</arg>
+<arg>name=John Smith</arg>
+<arg>gender=M</arg>
+<arg>age=${agex}</arg>
+<arg>salary=50000</arg>
+<arg>tax=500</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230207 02:21:43.896" level="INFO">${getdicx} = {'natid': '1231234', 'name': 'John Smith', 'gender': 'M', 'age': 33, 'salary': '50000', 'tax': '500'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.896" endtime="20230207 02:21:43.896"/>
+</kw>
+<msg timestamp="20230207 02:21:43.896" level="INFO">${hero} = {'natid': '1231234', 'name': 'John Smith', 'gender': 'M', 'age': 33, 'salary': '50000', 'tax': '500'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.896" endtime="20230207 02:21:43.896"/>
+</kw>
+<kw name="Compute Tax Relief" library="fileGen">
+<var>${tax_relief}</var>
+<arg>${hero}</arg>
+<msg timestamp="20230207 02:21:43.896" level="INFO">${tax_relief} = {'natid': '$1231', 'relief': 39600.0, 'name': 'John Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.896" endtime="20230207 02:21:43.896"/>
+</kw>
+<msg timestamp="20230207 02:21:43.896" level="INFO">${tax_relief} = {'natid': '$1231', 'relief': 39600.0, 'name': 'John Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.894" endtime="20230207 02:21:43.896"/>
+</kw>
+<kw name="Get Tax Relief" library="fileGen">
+<var>${taxrelief}</var>
+<arg>${tax_relief}</arg>
+<arg>taxrelief</arg>
+<msg timestamp="20230207 02:21:43.896" level="INFO">{'natid': '$1231', 'relief': 39600.0, 'name': 'John Smith'} taxrelief</msg>
+<msg timestamp="20230207 02:21:43.896" level="INFO">${taxrelief} = 39600.0</msg>
+<status status="PASS" starttime="20230207 02:21:43.896" endtime="20230207 02:21:43.896"/>
+</kw>
+<msg timestamp="20230207 02:21:43.896" level="INFO">${taxrelief} = 39600.0</msg>
+<status status="PASS" starttime="20230207 02:21:43.894" endtime="20230207 02:21:43.896"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${taxrelief}</arg>
+<arg>${x_relief}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20230207 02:21:43.896" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'int'&gt;</msg>
+<status status="PASS" starttime="20230207 02:21:43.896" endtime="20230207 02:21:43.896"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${taxrelief}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.896" level="INFO">39600.0</msg>
+<status status="PASS" starttime="20230207 02:21:43.896" endtime="20230207 02:21:43.896"/>
+</kw>
+<doc>AC4 : Validate after tax relief amount should be remove any decimal places</doc>
+<tag>regression</tag>
+<status status="PASS" starttime="20230207 02:21:43.886" endtime="20230207 02:21:43.904"/>
+</test>
+<test id="s1-t13" name="UStory04_Validate tax relief is &gt; 0.00 and &lt; 50.00" line="104">
+<kw name="taxation_flat_rate_on_limit" library="common">
+<var>${taxrelief}</var>
+<kw name="Age_factor" library="common">
+<var>${agex}</var>
+<kw name="Calculate Age" library="fileGen">
+<var>${age}</var>
+<arg>21021989</arg>
+<msg timestamp="20230207 02:21:43.906" level="INFO">${age} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.906" endtime="20230207 02:21:43.906"/>
+</kw>
+<msg timestamp="20230207 02:21:43.906" level="INFO">${agex} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.906" endtime="20230207 02:21:43.906"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${getdicx}</var>
+<arg>natid=112-222</arg>
+<arg>name=John jr. Smith</arg>
+<arg>gender=M</arg>
+<arg>age=${agex}</arg>
+<arg>salary=46.71</arg>
+<arg>tax=3.9</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230207 02:21:43.906" level="INFO">${getdicx} = {'natid': '112-222', 'name': 'John jr. Smith', 'gender': 'M', 'age': 33, 'salary': '46.71', 'tax': '3.9'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.906" endtime="20230207 02:21:43.906"/>
+</kw>
+<kw name="Compute Tax Relief" library="fileGen">
+<var>${tax_relief}</var>
+<arg>${getdicx}</arg>
+<msg timestamp="20230207 02:21:43.906" level="INFO">${tax_relief} = {'natid': '$112-', 'relief': 50.0, 'name': 'John jr. Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.906" endtime="20230207 02:21:43.906"/>
+</kw>
+<kw name="Get Tax Relief" library="fileGen">
+<var>${taxrelief}</var>
+<arg>${tax_relief}</arg>
+<arg>taxrelief</arg>
+<msg timestamp="20230207 02:21:43.906" level="INFO">{'natid': '$112-', 'relief': 50.0, 'name': 'John jr. Smith'} taxrelief</msg>
+<msg timestamp="20230207 02:21:43.906" level="INFO">${taxrelief} = 50.0</msg>
+<status status="PASS" starttime="20230207 02:21:43.906" endtime="20230207 02:21:43.906"/>
+</kw>
+<msg timestamp="20230207 02:21:43.906" level="INFO">${taxrelief} = 50.0</msg>
+<status status="PASS" starttime="20230207 02:21:43.906" endtime="20230207 02:21:43.906"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${taxrelief}</arg>
+<arg>${50.00}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230207 02:21:43.906" endtime="20230207 02:21:43.906"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${taxrelief}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.906" level="INFO">50.0</msg>
+<status status="PASS" starttime="20230207 02:21:43.906" endtime="20230207 02:21:43.906"/>
+</kw>
+<doc>AC5 : Validate calculated tax is &gt;0.00 and &lt;50.00 should has flat final rate of 50.00</doc>
+<tag>regression</tag>
+<status status="PASS" starttime="20230207 02:21:43.904" endtime="20230207 02:21:43.906"/>
+</test>
+<test id="s1-t14" name="UStory04_Validate tax relief computation before applying normal rounding rule" line="111">
+<kw name="Replace_mask_and_calculate_age" library="common">
+<var>${gxt}</var>
+<var>${getdicxx}</var>
+<var>${tax_relief}</var>
+<kw name="Age_factor" library="common">
+<var>${agex}</var>
+<kw name="Calculate Age" library="fileGen">
+<var>${age}</var>
+<arg>21021989</arg>
+<msg timestamp="20230207 02:21:43.916" level="INFO">${age} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.916"/>
+</kw>
+<msg timestamp="20230207 02:21:43.916" level="INFO">${agex} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.916"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${agex}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.916" level="INFO">33</msg>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.916"/>
+</kw>
+<kw name="Replace_chars" library="common">
+<var>${gxt}</var>
+<kw name="Repchars" library="fileGen">
+<var>${rchars}</var>
+<arg>111-222</arg>
+<msg timestamp="20230207 02:21:43.916" level="INFO">${rchars} = 111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.916"/>
+</kw>
+<msg timestamp="20230207 02:21:43.916" level="INFO">${gxt} = 111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.916"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${gxt}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.916" level="INFO">111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.916"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${getdicx}</var>
+<arg>natid=${gxt}</arg>
+<arg>name=John sr. Smith</arg>
+<arg>gender=M</arg>
+<arg>age=${agex}</arg>
+<arg>salary=457.81</arg>
+<arg>tax=58</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230207 02:21:43.916" level="INFO">${getdicx} = {'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.916"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getdicx}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.916" level="INFO">{'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.916"/>
+</kw>
+<kw name="Compute Tax Relief" library="fileGen">
+<var>${tax_relief}</var>
+<arg>${getdicx}</arg>
+<msg timestamp="20230207 02:21:43.916" level="INFO">${tax_relief} = {'natid': '$111-', 'relief': 319.85, 'name': 'John sr. Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.916"/>
+</kw>
+<kw name="Get Tax Relief" library="fileGen">
+<var>${masked}</var>
+<arg>${getdicx}</arg>
+<arg>natid</arg>
+<msg timestamp="20230207 02:21:43.916" level="INFO">{'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'} natid</msg>
+<msg timestamp="20230207 02:21:43.916" level="INFO">${masked} = 111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.916"/>
+</kw>
+<msg timestamp="20230207 02:21:43.924" level="INFO">${gxt} = 111-$$$</msg>
+<msg timestamp="20230207 02:21:43.924" level="INFO">${getdicxx} = {'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'}</msg>
+<msg timestamp="20230207 02:21:43.924" level="INFO">${tax_relief} = {'natid': '$111-', 'relief': 319.85, 'name': 'John sr. Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.924"/>
+</kw>
+<kw name="Get Tax Relief" library="fileGen">
+<var>${taxrelief}</var>
+<arg>${tax_relief}</arg>
+<arg>taxrelief</arg>
+<msg timestamp="20230207 02:21:43.924" level="INFO">{'natid': '$111-', 'relief': 319.85, 'name': 'John sr. Smith'} taxrelief</msg>
+<msg timestamp="20230207 02:21:43.924" level="INFO">${taxrelief} = 319.85</msg>
+<status status="PASS" starttime="20230207 02:21:43.924" endtime="20230207 02:21:43.924"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${taxrelief}</arg>
+<arg>${rounding1}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230207 02:21:43.924" endtime="20230207 02:21:43.926"/>
+</kw>
+<doc>AC6-1: Validate after tax relief before remove decimal places</doc>
+<tag>api</tag>
+<tag>regression</tag>
+<status status="PASS" starttime="20230207 02:21:43.916" endtime="20230207 02:21:43.926"/>
+</test>
+<test id="s1-t15" name="UStory04_Validate tax relief computation after applying normal rounding rule" line="118">
+<kw name="Replace_mask_and_calculate_age" library="common">
+<var>${gxt}</var>
+<var>${getdicxx}</var>
+<var>${tax_relief}</var>
+<kw name="Age_factor" library="common">
+<var>${agex}</var>
+<kw name="Calculate Age" library="fileGen">
+<var>${age}</var>
+<arg>21021989</arg>
+<msg timestamp="20230207 02:21:43.926" level="INFO">${age} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.926" endtime="20230207 02:21:43.926"/>
+</kw>
+<msg timestamp="20230207 02:21:43.926" level="INFO">${agex} = 33</msg>
+<status status="PASS" starttime="20230207 02:21:43.926" endtime="20230207 02:21:43.926"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${agex}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.926" level="INFO">33</msg>
+<status status="PASS" starttime="20230207 02:21:43.926" endtime="20230207 02:21:43.926"/>
+</kw>
+<kw name="Replace_chars" library="common">
+<var>${gxt}</var>
+<kw name="Repchars" library="fileGen">
+<var>${rchars}</var>
+<arg>111-222</arg>
+<msg timestamp="20230207 02:21:43.926" level="INFO">${rchars} = 111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.926" endtime="20230207 02:21:43.926"/>
+</kw>
+<msg timestamp="20230207 02:21:43.926" level="INFO">${gxt} = 111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.926" endtime="20230207 02:21:43.926"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${gxt}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.926" level="INFO">111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.926" endtime="20230207 02:21:43.926"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${getdicx}</var>
+<arg>natid=${gxt}</arg>
+<arg>name=John sr. Smith</arg>
+<arg>gender=M</arg>
+<arg>age=${agex}</arg>
+<arg>salary=457.81</arg>
+<arg>tax=58</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230207 02:21:43.934" level="INFO">${getdicx} = {'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.926" endtime="20230207 02:21:43.934"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getdicx}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.934" level="INFO">{'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.934" endtime="20230207 02:21:43.934"/>
+</kw>
+<kw name="Compute Tax Relief" library="fileGen">
+<var>${tax_relief}</var>
+<arg>${getdicx}</arg>
+<msg timestamp="20230207 02:21:43.936" level="INFO">${tax_relief} = {'natid': '$111-', 'relief': 319.85, 'name': 'John sr. Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.934" endtime="20230207 02:21:43.936"/>
+</kw>
+<kw name="Get Tax Relief" library="fileGen">
+<var>${masked}</var>
+<arg>${getdicx}</arg>
+<arg>natid</arg>
+<msg timestamp="20230207 02:21:43.936" level="INFO">{'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'} natid</msg>
+<msg timestamp="20230207 02:21:43.936" level="INFO">${masked} = 111-$$$</msg>
+<status status="PASS" starttime="20230207 02:21:43.936" endtime="20230207 02:21:43.936"/>
+</kw>
+<msg timestamp="20230207 02:21:43.936" level="INFO">${gxt} = 111-$$$</msg>
+<msg timestamp="20230207 02:21:43.936" level="INFO">${getdicxx} = {'natid': '111-$$$', 'name': 'John sr. Smith', 'gender': 'M', 'age': 33, 'salary': '457.81', 'tax': '58'}</msg>
+<msg timestamp="20230207 02:21:43.936" level="INFO">${tax_relief} = {'natid': '$111-', 'relief': 319.85, 'name': 'John sr. Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.926" endtime="20230207 02:21:43.936"/>
+</kw>
+<kw name="Compute Tax Relief" library="fileGen">
+<var>${tax_relief}</var>
+<arg>${getdicxx}</arg>
+<arg>Yes</arg>
+<msg timestamp="20230207 02:21:43.936" level="INFO">${tax_relief} = {'natid': '$111-', 'relief': 320, 'name': 'John sr. Smith'}</msg>
+<status status="PASS" starttime="20230207 02:21:43.936" endtime="20230207 02:21:43.936"/>
+</kw>
+<kw name="Get Tax Relief" library="fileGen">
+<var>${taxrelief}</var>
+<arg>${tax_relief}</arg>
+<arg>taxrelief</arg>
+<msg timestamp="20230207 02:21:43.936" level="INFO">{'natid': '$111-', 'relief': 320, 'name': 'John sr. Smith'} taxrelief</msg>
+<msg timestamp="20230207 02:21:43.936" level="INFO">${taxrelief} = 320</msg>
+<status status="PASS" starttime="20230207 02:21:43.936" endtime="20230207 02:21:43.936"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${taxrelief}</arg>
+<arg>${rounding2}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230207 02:21:43.936" endtime="20230207 02:21:43.936"/>
+</kw>
+<doc>AC6-2 : Validate after tax relief after subject to rounding rule</doc>
+<tag>regression</tag>
+<status status="PASS" starttime="20230207 02:21:43.926" endtime="20230207 02:21:43.936"/>
+</test>
+<test id="s1-t16" name="UStory05_Check dispenses action button is red-colored" line="126">
+<kw name="get_total_tax" library="ui">
+<var>${gettotal}</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${tget3}</var>
+<arg>${total_tax_relief}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.974" level="INFO">${tget3} = £130301.85 will be dispensed to 9 Working Class Hero/s</msg>
+<status status="PASS" starttime="20230207 02:21:43.936" endtime="20230207 02:21:43.974"/>
+</kw>
+<msg timestamp="20230207 02:21:43.974" level="INFO">${gettotal} = £130301.85 will be dispensed to 9 Working Class Hero/s</msg>
+<status status="PASS" starttime="20230207 02:21:43.936" endtime="20230207 02:21:43.974"/>
+</kw>
+<kw name="get_total_relief" library="ui">
+<var>${natval}</var>
+<var>${relval}</var>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${tget5}</var>
+<arg>${get_details_natid}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.984" level="INFO">${tget5} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="5d9c3823-61fc-415d-a5a1-097bcc981e0a")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20230207 02:21:43.976" endtime="20230207 02:21:43.984"/>
+</kw>
+<kw name="get_relief_all" library="ui">
+<var>${trel}</var>
+<kw name="Create List" library="BuiltIn">
+<var>${textlink}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20230207 02:21:43.986" level="INFO">${textlink} = []</msg>
+<status status="PASS" starttime="20230207 02:21:43.984" endtime="20230207 02:21:43.986"/>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${tget4}</var>
+<arg>${get_details_relief}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20230207 02:21:43.995" level="INFO">${tget4} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="33d6dc83-6993-46c6-9009-4b4fd78ec43f")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20230207 02:21:43.986" endtime="20230207 02:21:43.995"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${tget4}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:43.995" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="33d6dc83-6993-46c6-9009-4b4fd78ec43f")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="5e992402-12ff-410d-abd3-cd2f3011722c")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="5e3742a2-7539-46b3-87cd-39f563eb5f68")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="40e78721-8459-4c98-8ee8-0d25ad336ac9")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="201435cc-0320-4a86-9db4-303c7bd7ea6b")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="5cec6c98-03bf-4522-87b4-95281a69a5e6")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="60720c5d-b91c-4aa0-a09f-d0ce68e02eee")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="49d9cde4-8cec-4322-92e9-5ed0c800cd34")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="ca4da91e-33b7-4373-9712-a78c5f02f812")&gt;]</msg>
+<status status="PASS" starttime="20230207 02:21:43.995" endtime="20230207 02:21:43.995"/>
+</kw>
+<for flavor="IN">
+<var>${items}</var>
+<value>@{tget4}</value>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="33d6dc83-6993-46c6-9009-4b4fd78ec43f")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:44.005" level="INFO">${link_text} = 39200.00</msg>
+<status status="PASS" starttime="20230207 02:21:43.997" endtime="20230207 02:21:44.005"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.007" level="INFO">39200.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.005" endtime="20230207 02:21:44.007"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:44.007" endtime="20230207 02:21:44.007"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:43.997" endtime="20230207 02:21:44.007"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="5e992402-12ff-410d-abd3-cd2f3011722c")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:44.025" level="INFO">${link_text} = 36000.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.007" endtime="20230207 02:21:44.025"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.025" level="INFO">36000.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.025" endtime="20230207 02:21:44.027"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:44.027" endtime="20230207 02:21:44.027"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:44.007" endtime="20230207 02:21:44.027"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="5e3742a2-7539-46b3-87cd-39f563eb5f68")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:44.045" level="INFO">${link_text} = 43700.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.027" endtime="20230207 02:21:44.045"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.045" level="INFO">43700.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.045" endtime="20230207 02:21:44.045"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:44.045" endtime="20230207 02:21:44.045"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:44.027" endtime="20230207 02:21:44.045"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="40e78721-8459-4c98-8ee8-0d25ad336ac9")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:44.057" level="INFO">${link_text} = 4600.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.045" endtime="20230207 02:21:44.057"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.065" level="INFO">4600.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.065" endtime="20230207 02:21:44.065"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:44.065" endtime="20230207 02:21:44.065"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:44.045" endtime="20230207 02:21:44.065"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="201435cc-0320-4a86-9db4-303c7bd7ea6b")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:44.077" level="INFO">${link_text} = 819.85</msg>
+<status status="PASS" starttime="20230207 02:21:44.065" endtime="20230207 02:21:44.077"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.077" level="INFO">819.85</msg>
+<status status="PASS" starttime="20230207 02:21:44.077" endtime="20230207 02:21:44.077"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:44.077" endtime="20230207 02:21:44.085"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:44.065" endtime="20230207 02:21:44.085"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="5cec6c98-03bf-4522-87b4-95281a69a5e6")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:44.097" level="INFO">${link_text} = 50.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.085" endtime="20230207 02:21:44.097"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.097" level="INFO">50.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.097" endtime="20230207 02:21:44.097"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:44.097" endtime="20230207 02:21:44.097"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:44.085" endtime="20230207 02:21:44.097"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="60720c5d-b91c-4aa0-a09f-d0ce68e02eee")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:44.117" level="INFO">${link_text} = 995.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.105" endtime="20230207 02:21:44.117"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.117" level="INFO">995.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.117" endtime="20230207 02:21:44.117"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:44.117" endtime="20230207 02:21:44.117"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:44.105" endtime="20230207 02:21:44.117"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="49d9cde4-8cec-4322-92e9-5ed0c800cd34")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:44.138" level="INFO">${link_text} = 0</msg>
+<status status="PASS" starttime="20230207 02:21:44.117" endtime="20230207 02:21:44.138"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.138" level="INFO">0</msg>
+<status status="PASS" starttime="20230207 02:21:44.138" endtime="20230207 02:21:44.138"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:44.138" endtime="20230207 02:21:44.138"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:44.117" endtime="20230207 02:21:44.138"/>
+</iter>
+<iter>
+<var name="${items}">&lt;selenium.webdriver.remote.webelement.WebElement (session="9379d1a22792b9bb911843193a90fa2a", element="ca4da91e-33b7-4373-9712-a78c5f02f812")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${link_text}</var>
+<arg>${items}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:44.158" level="INFO">${link_text} = 4937.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.138" endtime="20230207 02:21:44.158"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${link_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.158" level="INFO">4937.00</msg>
+<status status="PASS" starttime="20230207 02:21:44.158" endtime="20230207 02:21:44.158"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${textlink}</arg>
+<arg>${link_text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230207 02:21:44.158" endtime="20230207 02:21:44.158"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:44.138" endtime="20230207 02:21:44.158"/>
+</iter>
+<status status="PASS" starttime="20230207 02:21:43.995" endtime="20230207 02:21:44.158"/>
+</for>
+<msg timestamp="20230207 02:21:44.158" level="INFO">${trel} = ['39200.00', '36000.00', '43700.00', '4600.00', '819.85', '50.00', '995.00', '0', '4937.00']</msg>
+<status status="PASS" starttime="20230207 02:21:43.984" endtime="20230207 02:21:44.158"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${trel}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.158" level="INFO">['39200.00', '36000.00', '43700.00', '4600.00', '819.85', '50.00', '995.00', '0', '4937.00']</msg>
+<status status="PASS" starttime="20230207 02:21:44.158" endtime="20230207 02:21:44.158"/>
+</kw>
+<kw name="Getall Total" library="fileGen">
+<var>${tget6}</var>
+<var>${tget7}</var>
+<arg>nat=${tget5}</arg>
+<arg>ref=${trel}</arg>
+<msg timestamp="20230207 02:21:44.158" level="INFO">${tget6} = 9</msg>
+<msg timestamp="20230207 02:21:44.158" level="INFO">${tget7} = 130301.85</msg>
+<status status="PASS" starttime="20230207 02:21:44.158" endtime="20230207 02:21:44.158"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${natval}</var>
+<arg>${tget6}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230207 02:21:44.166" level="INFO">${natval} = 9</msg>
+<status status="PASS" starttime="20230207 02:21:44.166" endtime="20230207 02:21:44.166"/>
+</kw>
+<kw name="Convert To Number" library="BuiltIn">
+<var>${relval}</var>
+<arg>${tget7}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<msg timestamp="20230207 02:21:44.166" level="INFO">${relval} = 130301.85</msg>
+<status status="PASS" starttime="20230207 02:21:44.166" endtime="20230207 02:21:44.166"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${natval}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.166" level="INFO">9</msg>
+<status status="PASS" starttime="20230207 02:21:44.166" endtime="20230207 02:21:44.166"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${relval}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.168" level="INFO">130301.85</msg>
+<status status="PASS" starttime="20230207 02:21:44.166" endtime="20230207 02:21:44.168"/>
+</kw>
+<msg timestamp="20230207 02:21:44.168" level="INFO">${natval} = 9</msg>
+<msg timestamp="20230207 02:21:44.168" level="INFO">${relval} = 130301.85</msg>
+<status status="PASS" starttime="20230207 02:21:43.974" endtime="20230207 02:21:44.168"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${gettotal}</arg>
+<arg>${natval} ${totaltax2}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230207 02:21:44.168" endtime="20230207 02:21:44.168"/>
+</kw>
+<kw name="red_colored_button" library="ui">
+<var>${color}</var>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<var>${colored}</var>
+<arg>${coloredscript}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20230207 02:21:44.168" level="INFO">Executing JavaScript:
+return window.getComputedStyle(document.querySelector("a.btn-danger")).getPropertyValue("background-color");
+Without any arguments.</msg>
+<msg timestamp="20230207 02:21:44.176" level="INFO">${colored} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20230207 02:21:44.168" endtime="20230207 02:21:44.176"/>
+</kw>
+<msg timestamp="20230207 02:21:44.176" level="INFO">${color} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20230207 02:21:44.168" endtime="20230207 02:21:44.176"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${color}</arg>
+<arg>${rededcolor}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230207 02:21:44.176" endtime="20230207 02:21:44.176"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${color}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230207 02:21:44.178" level="INFO">rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20230207 02:21:44.178" endtime="20230207 02:21:44.178"/>
+</kw>
+<doc>AC1 : Button must be 'red-colored'</doc>
+<tag>regression</tag>
+<tag>ui</tag>
+<status status="PASS" starttime="20230207 02:21:43.936" endtime="20230207 02:21:44.178"/>
+</test>
+<test id="s1-t17" name="UStory05_Check text on button should be Dispense Now" line="138">
+<kw name="get_dispense_text" library="ui">
+<var>${text}</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${tget}</var>
+<arg>${get_dispense_text}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:44.208" level="INFO">${tget} = Dispense Now</msg>
+<status status="PASS" starttime="20230207 02:21:44.178" endtime="20230207 02:21:44.208"/>
+</kw>
+<msg timestamp="20230207 02:21:44.208" level="INFO">${text} = Dispense Now</msg>
+<status status="PASS" starttime="20230207 02:21:44.178" endtime="20230207 02:21:44.208"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${text}</arg>
+<arg>${dispbtn}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230207 02:21:44.208" endtime="20230207 02:21:44.208"/>
+</kw>
+<doc>AC2 : Text on button must be 'Dispense Now'</doc>
+<tag>regression</tag>
+<tag>ui</tag>
+<status status="PASS" starttime="20230207 02:21:44.178" endtime="20230207 02:21:44.208"/>
+</test>
+<test id="s1-t18" name="UStory05_Governor Dispenses Tax Relief" line="144">
+<kw name="get_click_element" library="ui">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${get_dispense_click}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230207 02:21:44.218" level="INFO">Clicking element '//a[text()='Dispense Now']'.</msg>
+<status status="PASS" starttime="20230207 02:21:44.218" endtime="20230207 02:21:44.531"/>
+</kw>
+<status status="PASS" starttime="20230207 02:21:44.216" endtime="20230207 02:21:44.532"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${dispensed}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230207 02:21:44.532" endtime="20230207 02:21:44.548"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230207 02:21:44.548" endtime="20230207 02:21:46.680"/>
+</kw>
+<doc>AC3 : Page should contain 'Cash dispensed'</doc>
+<tag>regression</tag>
+<tag>ui</tag>
+<status status="PASS" starttime="20230207 02:21:44.216" endtime="20230207 02:21:46.680"/>
+</test>
+<doc>Page Object in Robot Framework</doc>
+<status status="PASS" starttime="20230207 02:21:27.417" endtime="20230207 02:21:46.680"/>
+</suite>
+<statistics>
+<total>
+<stat pass="18" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="8" fail="0" skip="0">api</stat>
+<stat pass="18" fail="0" skip="0">regression</stat>
+<stat pass="7" fail="0" skip="0">ui</stat>
+</tag>
+<suite>
+<stat pass="18" fail="0" skip="0" id="s1" name="suiteTest">suiteTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
