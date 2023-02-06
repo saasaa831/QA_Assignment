@@ -48,6 +48,9 @@ UStory03_Upload CSV File with details of Working Class Heros
     Launch_browser
     # Click the button to navigate to the file upload page
     Upload_csv_file
+     ${getnat_list}=     Get_all_natid_details
+    Log    ${getnat_list}
+    Should Contain        ${getnat_list}      115-$$$$$$$$$$$$$
 
 UStory03_Upload CSV File with details of invalid birthday date format of Working Class Heros
     [Documentation]  AC3-1 : Upload working class details with invalid date format for birthday
