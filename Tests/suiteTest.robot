@@ -17,7 +17,7 @@ UStory01_Insert Single Working Class Hero
     log    Hero with Status code ${scode}
 
 UStory01_Insertion Invalid date for Working Class Hero
-    [Documentation]    AC2 : Insert single record of Working class hero with invalid Birthday
+    [Documentation]    AC1-1 : Insert single record of Working class hero with invalid Birthday
     [Tags]     api  regression
     ${status_message}=  Post_action_invalid_date_Insertion
     Should Contain    ${status_message}      Internal Server Error
@@ -50,7 +50,7 @@ UStory03_Upload CSV File with details of Working Class Heros
     Upload_csv_file
 
 UStory03_Upload CSV File with details of invalid birthday date format of Working Class Heros
-    [Documentation]  AC4 : Upload working class details with invalid date format for birthday
+    [Documentation]  AC3-1 : Upload working class details with invalid date format for birthday
     [Tags]     ui  regression
     # Click the button to navigate to the file upload page
     Upload_invalid_date_csv_file
