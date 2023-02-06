@@ -1,5 +1,6 @@
 uploadcsv = "//input[@class='custom-file-input']"
 coloredscript = """return window.getComputedStyle(document.querySelector("a.btn-danger")).getPropertyValue("background-color");"""
+reloadedPage = """window.location.reload(true);"""
 get_dispense_text = "//a[text()='Dispense Now']"
 get_dispense_click = "//a[text()='Dispense Now']"
 get_details_natid = "//tbody/tr/td[1]"
