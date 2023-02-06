@@ -15,15 +15,22 @@ Upload_csv_file
     ${getpath}=     get_path    ${FILE_PATH}
     Log    ${getpath}
     Choose File     ${uploadcsv}    ${getpath}
+    SLEEP    5
+    RELOAD PAGE
 
 Upload_invalid_date_csv_file
     ${getpath}=     get_path    ${File_invalid_data}
     Log    ${getpath}
     Choose File     ${uploadcsv}    ${getpath}
+    SLEEP    5
+    RELOAD PAGE
 
 red_colored_button
     ${colored}=     Execute JavaScript  ${coloredscript}
     [Return]    ${colored}
+
+reload_page_details
+    Execute JavaScript  ${reloadedPage}
 
 get_dispense_text
     ${tget}=    Get Text    ${get_dispense_text}
