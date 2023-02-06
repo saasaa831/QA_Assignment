@@ -48,7 +48,8 @@ UStory03_Upload CSV File with details of Working Class Heros
     Launch_browser
     # Click the button to navigate to the file upload page
     Upload_csv_file
-     ${getnat_list}=     Get_all_natid_details
+    Reload_page_details
+    ${getnat_list}=     Get_all_natid_details
     Log    ${getnat_list}
     Should Contain        ${getnat_list}      115-$$$$$$$$$$$$$
 
