@@ -126,6 +126,7 @@ def get_schema_build(resp_content):
             }
         }
     }
+    print(schema)
     getschema = validatejson(resp_content, schema)
     return getschema
 
